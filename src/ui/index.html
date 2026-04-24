@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retail Intelligence Platform</title>
+  <meta name="description"
+    content="Real-time competitive intelligence and market analysis across e-commerce platforms." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <div class="logo-text">
+          <span class="logo-name">Retail AI inteligence</span>
+        </div>
+      </div>
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <a href="#" class="nav-item active" data-page="dashboard" id="nav-dashboard">
+        <svg class="nav-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+        </svg>
+        <span>Dashboard</span>
+      </a>
+      <a href="#" class="nav-item" data-page="collection" id="nav-collection">
+        <svg class="nav-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        <span>Data Collection</span>
+      </a>
+      <a href="#" class="nav-item" data-page="explorer" id="nav-explorer">
+        <svg class="nav-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <span>Product Explorer</span>
+      </a>
+      <div class="nav-section-label" style="margin-top:6px">Analysis</div>
+      <a href="#" class="nav-item" data-page="analytics" id="nav-analytics">
+        <svg class="nav-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <line x1="18" y1="20" x2="18" y2="10" />
+          <line x1="12" y1="20" x2="12" y2="4" />
+          <line x1="6" y1="20" x2="6" y2="14" />
+        </svg>
+        <span>Price Analytics</span>
+      </a>
+      <a href="#" class="nav-item" data-page="insights" id="nav-insights">
+        <svg class="nav-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <path
+            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+        <span>AI Insights</span>
+      </a>
+      <a href="#" class="nav-item" data-page="reports" id="nav-reports">
+        <svg class="nav-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="16" y1="13" x2="8" y2="13" />
+          <line x1="16" y1="17" x2="8" y2="17" />
+        </svg>
+        <span>Reports</span>
+      </a>
+      <a href="#" class="nav-item" data-page="chatbot" id="nav-chatbot">
+        <svg class="nav-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+        </svg>
+        <span>Report Chat</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="status-label-sm">System Status</div>
+      <div class="status-chips">
+        <div class="status-chip">
+          <span class="status-chip-val" id="stat-products">—</span>
+          <span class="status-chip-label">Products</span>
+        </div>
+        <div class="status-chip">
+          <span class="status-chip-val" id="stat-platforms">—</span>
+          <span class="status-chip-label">Platforms</span>
+        </div>
+        <div class="status-chip">
+          <span class="status-chip-val" id="stat-reports">—</span>
+          <span class="status-chip-label">Reports</span>
+        </div>
+      </div>
+      <div class="api-pill">
+        <span class="status-dot" id="apiStatusDot"></span>
+        <span id="apiStatusText">Connecting…</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content" id="mainContent">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <div>
+          <h1 class="page-title" id="pageTitle">Dashboard</h1>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <span class="topbar-time" id="topbarTime"></span>
+      </div>
+    </header>
+
+    <!-- PAGE: DASHBOARD -->
+    <section class="page active" id="page-dashboard">
+      <div class="kpi-grid">
+        <div class="kpi-card kpi-card--blue">
+          <div class="kpi-top">
+            <div class="kpi-label">Total Products</div>
+            <div class="kpi-marker kpi-marker--blue">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" />
+                <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+              </svg>
+            </div>
+          </div>
+          <div class="kpi-value" id="d-total-products">—</div>
+          <div class="kpi-sub">Actively tracked</div>
+        </div>
+        <div class="kpi-card kpi-card--green">
+          <div class="kpi-top">
+            <div class="kpi-label">Price Drops</div>
+            <div class="kpi-marker kpi-marker--green">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                <polyline points="17 6 23 6 23 12" />
+              </svg>
+            </div>
+          </div>
+          <div class="kpi-value" id="d-price-drops">—</div>
+          <div class="kpi-sub">Opportunities found</div>
+        </div>
+        <div class="kpi-card kpi-card--amber">
+          <div class="kpi-top">
+            <div class="kpi-label">Price Increases</div>
+            <div class="kpi-marker kpi-marker--amber">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 18 13.5 8.5 8.5 13.5 1 6" />
+                <polyline points="17 18 23 18 23 12" />
+              </svg>
+            </div>
+          </div>
+          <div class="kpi-value" id="d-price-increases">—</div>
+          <div class="kpi-sub">Trending upward</div>
+        </div>
+        <div class="kpi-card kpi-card--violet">
+          <div class="kpi-top">
+            <div class="kpi-label">Platforms</div>
+            <div class="kpi-marker kpi-marker--violet">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+          </div>
+          <div class="kpi-value" id="d-platforms">—</div>
+          <div class="kpi-sub">Multi-platform</div>
+        </div>
+      </div>
+      <!-- Quick Actions -->
+      <div class="card mt-4">
+        <div class="card-title">Quick Actions</div>
+        <div class="actions-grid">
+          <button class="action-tile" onclick="navigateTo('collection')">
+            <div class="action-tile-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </div>
+            <div class="action-tile-name">Collect Data</div>
+            <div class="action-tile-desc">Scrape products from Amazon & Flipkart</div>
+          </button>
+          <button class="action-tile" onclick="navigateTo('explorer')">
+            <div class="action-tile-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+            <div class="action-tile-name">Explore Products</div>
+            <div class="action-tile-desc">Browse and compare across platforms</div>
+          </button>
+          <button class="action-tile" onclick="navigateTo('insights')">
+            <div class="action-tile-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+            </div>
+            <div class="action-tile-name">AI Analysis</div>
+            <div class="action-tile-desc">Generate Gemini-powered market insights</div>
+          </button>
+          <button class="action-tile" onclick="navigateTo('analytics')">
+            <div class="action-tile-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+              </svg>
+            </div>
+            <div class="action-tile-name">Price Analytics</div>
+            <div class="action-tile-desc">Track price movements and trends</div>
+          </button>
+        </div>
+      </div>
+      <!-- Recent Activity -->
+      <div class="card mt-4">
+        <div class="card-hd">
+          <div class="card-title">Recent Activity</div>
+          <button class="btn btn-ghost btn-sm" onclick="loadDashboard()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10" />
+              <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10" />
+            </svg>
+            Refresh
+          </button>
+        </div>
+        <div id="recentActivity">
+          <div style="padding:4px">
+            <div class="skeleton-row" style="--d:0s"></div>
+            <div class="skeleton-row" style="--d:.07s"></div>
+            <div class="skeleton-row" style="--d:.14s"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE: DATA COLLECTION -->
+    <section class="page" id="page-collection">
+      <div class="page-intro">
+        <p class="page-intro-desc">Scrape product data from e-commerce platforms and save to the database</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Collection Settings</div>
+        <div class="form-grid">
+          <div class="form-group fg-full">
+            <label class="form-label" for="col-query">Search Query</label>
+            <input type="text" id="col-query" class="form-input"
+              placeholder="e.g. wireless headphones, laptop, smartphone" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="col-platform">Platform</label>
+            <select id="col-platform" class="form-select">
+              <option value="amazon">Amazon</option>
+              <option value="flipkart">Flipkart</option>
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="col-max">Max Results</label>
+            <input type="number" id="col-max" class="form-input" value="10" min="1" max="50" />
+          </div>
+        </div>
+        <div class="mt-4">
+          <button class="btn btn-primary" id="btnCollect" onclick="startCollection()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Start Collection
+          </button>
+        </div>
+      </div>
+      <div id="collectionResult" class="mt-4 hidden"></div>
+    </section>
+
+    <!-- PAGE: PRODUCT EXPLORER -->
+    <section class="page" id="page-explorer">
+      <div class="page-intro">
+        <p class="page-intro-desc">Search, browse and compare products across platforms</p>
+      </div>
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchExplorerTab(this, 'tab-msearch')">Multi-Platform Search</button>
+        <button class="tab-btn" onclick="switchExplorerTab(this, 'tab-browse')">Browse Database</button>
+        <button class="tab-btn" onclick="switchExplorerTab(this, 'tab-compare')">Compare Products</button>
+      </div>
+      <!-- Multi-Platform Search -->
+      <div class="tab-content active" id="tab-msearch">
+        <div class="card">
+          <div class="card-title">Search All Platforms Simultaneously</div>
+          <div class="form-grid">
+            <div class="form-group fg-wide">
+              <label class="form-label" for="ms-query">Search Query</label>
+              <input type="text" id="ms-query" class="form-input" placeholder="e.g. wireless headphones, laptop" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="ms-max">Results per Platform</label>
+              <input type="number" id="ms-max" class="form-input" value="5" min="1" max="10" />
+            </div>
+
+          </div>
+        </div>
+        <div class="checkbox-row">
+          <label class="check-label"><input type="checkbox" id="ms-amazon" checked /> Amazon</label>
+          <label class="check-label"><input type="checkbox" id="ms-flipkart" checked /> Flipkart</label>
+
+        </div>
+        <div class="mt-4">
+          <button class="btn btn-primary" id="btnMultiSearch" onclick="runMultiSearch()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            Search All Platforms
+          </button>
+        </div>
+      </div>
+      <div id="multiSearchResult" class="mt-4"></div>
+      </div>
+      <!-- Browse Database -->
+      <div class="tab-content" id="tab-browse">
+        <div class="card">
+          <div class="card-title">Browse Collected Products</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="br-platform">Platform</label>
+              <select id="br-platform" class="form-select" onchange="loadBrowse()">
+                <option value="all">All Platforms</option>
+                <option value="amazon">Amazon</option>
+                <option value="flipkart">Flipkart</option>
+
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="br-view">Filter</label>
+              <select id="br-view" class="form-select" onchange="loadBrowse()">
+                <option value="all">All Products</option>
+                <option value="price_drops">Price Drops</option>
+                <option value="trending">Trending</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div id="browseResult" class="mt-4"></div>
+      </div>
+      <!-- Compare Products -->
+      <div class="tab-content" id="tab-compare">
+        <div class="card">
+          <div class="card-title">Compare Two Products Side by Side</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="cmp-p1">Product 1</label>
+              <select id="cmp-p1" class="form-select"></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cmp-p2">Product 2</label>
+              <select id="cmp-p2" class="form-select"></select>
+            </div>
+          </div>
+          <div class="mt-4">
+            <button class="btn btn-primary" onclick="compareProducts()">Run Comparison</button>
+          </div>
+        </div>
+        <div id="compareResult" class="mt-4"></div>
+      </div>
+    </section>
+
+    <!-- PAGE: PRICE ANALYTICS -->
+    <section class="page" id="page-analytics">
+      <div class="page-intro">
+        <p class="page-intro-desc">Track price changes and identify market opportunities</p>
+      </div>
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchAnalyticsTab(this, 'tab-drops')">Price Drops</button>
+        <button class="tab-btn" onclick="switchAnalyticsTab(this, 'tab-increases')">Price Increases</button>
+        <button class="tab-btn" onclick="switchAnalyticsTab(this, 'tab-distribution')">Distribution</button>
+      </div>
+      <div class="tab-content active" id="tab-drops">
+        <div class="card">
+          <div class="card-hd">
+            <div class="card-title">Products with Price Reductions</div>
+            <div class="inline-ctl" style="display:flex;align-items:center;gap:12px">
+              <label class="form-label" for="drop-min" style="margin-bottom:0">Min Drop:</label>
+              <input type="range" id="drop-min" value="10" min="0" max="50" step="1" class="custom-slider"
+                oninput="updateDropMinLabel(); debouncedLoadPriceDrops();" />
+              <span id="drop-min-label"
+                style="font-size:0.85rem;font-weight:600;min-width:36px;color:var(--text-1)">10%</span>
+            </div>
+          </div>
+        </div>
+        <div id="priceDropsResult" class="mt-4"></div>
+      </div>
+      <div class="tab-content" id="tab-increases">
+        <div class="card">
+          <div class="card-hd">
+            <div class="card-title">Products with Price Increases</div>
+            <div class="inline-ctl" style="display:flex;align-items:center;gap:12px">
+              <label class="form-label" for="increase-min" style="margin-bottom:0">Min Increase:</label>
+              <input type="range" id="increase-min" value="10" min="0" max="50" step="1" class="custom-slider"
+                oninput="updateIncreaseMinLabel(); debouncedLoadPriceIncreases();" />
+              <span id="increase-min-label"
+                style="font-size:0.85rem;font-weight:600;min-width:36px;color:var(--text-1)">10%</span>
+            </div>
+          </div>
+        </div>
+        <div id="priceIncreasesResult" class="mt-4"></div>
+      </div>
+      <div class="tab-content" id="tab-distribution">
+        <div class="card">
+          <div class="card-title">Price Distribution Overview</div>
+          <div id="priceDistributionResult"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE: AI INSIGHTS -->
+    <section class="page" id="page-insights">
+      <div class="page-intro">
+        <p class="page-intro-desc">Generate intelligent market insights powered by Gemini AI</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Analysis Configuration</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Analysis Type</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="analysis-type" value="quick" checked />
+                <span>Quick Analysis</span>
+                <span class="radio-label-meta">~10 sec</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="analysis-type" value="deep" />
+                <span>Deep Analysis</span>
+                <span class="radio-label-meta">5–6 min</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="ai-platform">Platform</label>
+            <select id="ai-platform" class="form-select">
+              <option value="all">All Platforms</option>
+              <option value="amazon">Amazon</option>
+              <option value="flipkart">Flipkart</option>
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="ai-category">Category</label>
+            <select id="ai-category" class="form-select">
+              <option value="all">All Categories</option>
+              <option value="electronics">Electronics</option>
+              <option value="clothing">Clothing</option>
+              <option value="cosmetics">Cosmetics</option>
+              <option value="groceries">Groceries</option>
+              <option value="home & kitchen">Home &amp; Kitchen</option>
+            </select>
+          </div>
+        </div>
+        <div class="mt-4">
+          <button class="btn btn-primary" id="btnAnalyze" onclick="runAnalysis()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+            Run Analysis
+          </button>
+        </div>
+      </div>
+      <div id="analysisResult" class="mt-4"></div>
+    </section>
+
+    <!-- PAGE: REPORTS -->
+    <section class="page" id="page-reports">
+      <div class="page-intro">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <p class="page-intro-desc">View and download AI-generated analysis reports</p>
+          <button class="btn btn-ghost btn-sm" onclick="loadReports()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10" />
+              <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10" />
+            </svg>
+            Refresh
+          </button>
+        </div>
+      </div>
+      <div id="reportsResult"></div>
+    </section>
+
+    <!-- PAGE: REPORT CHAT -->
+    <section class="page" id="page-chatbot">
+      <div class="page-intro">
+        <p class="page-intro-desc">Select a report and chat with the AI about it in plain English or Hinglish.</p>
+      </div>
+      <div class="chat-layout">
+
+        <!-- LEFT: Report Selector Panel -->
+        <aside class="chat-sidebar-panel">
+          <div class="card" style="height:100%">
+            <div class="card-hd">
+              <span class="card-title">Reports</span>
+              <div style="display:flex;gap:6px;align-items:center">
+                <button class="btn btn-ghost btn-sm" id="btnUploadPdf" onclick="triggerPdfUpload()"
+                  title="Chat with an uploaded PDF">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  Upload PDF
+                </button>
+                <button class="btn btn-ghost btn-sm" onclick="loadChatReports()">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23 4 23 10 17 10" />
+                    <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <!-- Hidden file input for PDF upload -->
+            <input type="file" id="pdfFileInput" accept=".pdf" style="display:none" onchange="handlePdfUpload(event)" />
+            <div id="chatReportList" class="chat-report-list">
+              <div class="chat-empty-state">
+                <p>Loading reports…</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- RIGHT: Chat Window -->
+        <div class="chat-main">
+          <div class="card chat-card">
+
+            <!-- Active report banner -->
+            <div id="chatActiveBanner" class="chat-active-banner hidden">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+              <span id="chatActiveName">No report selected</span>
+              <button class="chat-clear-btn" onclick="clearChat()" title="Clear conversation">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6" />
+                  <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                  <path d="M10 11v6M14 11v6" />
+                </svg>
+                Clear
+              </button>
+            </div>
+
+            <!-- No report selected state -->
+            <div id="chatNoReport" class="chat-no-report">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                style="color:var(--text-3)">
+                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+              </svg>
+              <p>Select a report from the left panel to start chatting</p>
+            </div>
+
+            <!-- Messages area -->
+            <div id="chatMessages" class="chat-messages hidden"></div>
+
+            <!-- Typing indicator -->
+            <div id="chatTyping" class="chat-typing hidden">
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+            </div>
+
+            <!-- Input bar -->
+            <div id="chatInputBar" class="chat-input-bar hidden">
+              <textarea id="chatInput" class="chat-input"
+                placeholder="Ask anything about this report… (Enter to send, Shift+Enter for new line)"
+                rows="1"></textarea>
+              <button id="chatSendBtn" class="btn btn-primary chat-send-btn" onclick="sendChatMessage()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast container -->
+  <div id="toastContainer" class="toast-container"></div>
+  <script src="app.js"></script>
+</body>
+
+</html>

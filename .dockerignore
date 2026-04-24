@@ -1,0 +1,23 @@
+logs/
+data/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp
+*.ipynb
+.env
+build/
+dist/
+*.egg-info/
+
+# Ignore test outputs
+tests/__pycache__/
+
+# Ignore VS Code and OS files
+.vscode/
+*.swp
+*.bak
+Thumbs.db
+.DS_Store
